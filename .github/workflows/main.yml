@@ -31,8 +31,8 @@ jobs:
     - name: Botu Calistir
       env:
         # Site adresi değişirse buradan veya Secrets kısmından güncelleyebilirsin
-        SITE_URL: ${{ secrets.SITE_URL || 'https://dizipal1225.com/filmler' }}
-      run: python main.py
+        SITE_URL: ${{ secrets.SITE_URL || 'https://dizipal1226.com/diziler' }}
+      run: python dizi.py
 
     - name: Degisiklikleri Kaydet ve Yukle
       run: |
