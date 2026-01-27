@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Dizipal Arşiv</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+    margin:0;
+    font-family:-apple-system, sans-serif;
+    background:#344966;
+    color:#fff;
+}
+.header {
+    padding:15px;
+    background:#2c3e50;
+    position:sticky;
+    top:0;
+}
+.grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(140px,1fr));
+    gap:15px;
+    padding:20px;
+}
+.card {
+    background:#496785;
+    border-radius:10px;
+    overflow:hidden;
+    cursor:pointer;
+}
+.card img {
+    width:100%;
+    aspect-ratio:2/3;
+    object-fit:cover;
+}
+.card-title {
+    padding:8px;
+    font-size:.85em;
+    text-align:center;
+    font-weight:bold;
+}
+#detail {
+    display:none;
+    padding:20px;
+}
+.back {
+    cursor:pointer;
+    color:#f39c12;
+    margin-bottom:15px;
+    display:inline-block;
+}
+.genre {
+    background:#e67e22;
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:15px;
+    margin:0 5px 10px 0;
+    font-size:.8em;
+}
+.season {
+    margin-top:20px;
+}
+.episode {
+    background:#496785;
+    padding:10px;
+    border-radius:8px;
+    margin:5px 0;
+}
+.episode a {
+    color:#f39c12;
+    text-decoration:none;
+    font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<div class="header"><h2>Dizi Arşivi</h2></div>
+<div id="list" class="grid"></div>
+
+<div id="detail">
+    <span class="back" onclick="goBack()">← Geri</span>
+    <h1 id="dTitle"></h1>
+    <div id="dGenres"></div>
+    <p id="dSummary"></p>
+    <div id="seasons"></div>
+</div>
+
+<script>
+const data = [{"title": "Sekizinci Aile", "image": "https://www.themoviedb.org/t/p/w500/y8NmGRfD3GuhhR8bTj7rXWkOMqk.jpg", "summary": "Mütevazı bir başlangıçtan dünyanın en güçlü ailesi olmaya uzanan Basmacıgiller, zirvedeki yerlerini korumak için mücadele ediyor.", "genres": ["Komedi", "Yerli"], "seasons": {"1": [{"episode": "1. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-qj9q7gcyddoc.html"}, {"episode": "2. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-yggd89er3f15.html"}, {"episode": "3. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-1oi4rtwwyuve.html"}, {"episode": "4. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-g2nvfgp8qy45.html"}]}}];
+const list = document.getElementById("list");
+const detail = document.getElementById("detail");
+
+function renderList() {
+    list.innerHTML = "";
+    detail.style.display = "none";
+    list.style.display = "grid";
+
+    data.forEach(d => {
+        const c = document.createElement("div");
+        c.className = "card";
+        c.innerHTML = `
+            <img src="${d.image}" onerror="this.src='https://via.placeholder.com/200x300?text=No+Image'">
+            <div class="card-title">${d.title}</div>
+        `;
+        c.onclick = () => openDetail(d);
+        list.appendChild(c);
+    });
+}
+
+function openDetail(d) {
+    list.style.display = "none";
+    detail.style.display = "block";
+
+    document.getElementById("dTitle").innerText = d.title;
+    document.getElementById("dSummary").innerText = d.summary || "Özet bulunamadı";
+
+    const g = document.getElementById("dGenres");
+    g.innerHTML = "";
+    if (d.genres && d.genres.length) {
+        d.genres.forEach(x => {
+            const s = document.createElement("span");
+            s.className = "genre";
+            s.innerText = x;
+            g.appendChild(s);
+        });
+    }
+
+    const s = document.getElementById("seasons");
+    s.innerHTML = "";
+
+    Object.keys(d.seasons).sort().forEach(season => {
+        const div = document.createElement("div");
+        div.className = "season";
+        div.innerHTML = `<h2>Sezon ${season}</h2>`;
+
+        d.seasons[season].forEach(ep => {
+            const e = document.createElement("div");
+            e.className = "episode";
+            e.innerHTML = `<a href="${ep.videoUrl || ep.url}" target="_blank">${ep.episode}</a>`;
+            div.appendChild(e);
+        });
+
+        s.appendChild(div);
+    });
+}
+
+function goBack() {
+    renderList();
+}
+
+renderList();
+</script>
+</body>
+</html>

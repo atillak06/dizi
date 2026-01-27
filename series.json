@@ -1,0 +1,31 @@
+[
+  {
+    "title": "Sekizinci Aile",
+    "image": "https://www.themoviedb.org/t/p/w500/y8NmGRfD3GuhhR8bTj7rXWkOMqk.jpg",
+    "summary": "Mütevazı bir başlangıçtan dünyanın en güçlü ailesi olmaya uzanan Basmacıgiller, zirvedeki yerlerini korumak için mücadele ediyor.",
+    "genres": [
+      "Komedi",
+      "Yerli"
+    ],
+    "seasons": {
+      "1": [
+        {
+          "episode": "1. Bölüm",
+          "videoUrl": "https://x.ag2m4.cfd/embed-qj9q7gcyddoc.html"
+        },
+        {
+          "episode": "2. Bölüm",
+          "videoUrl": "https://x.ag2m4.cfd/embed-yggd89er3f15.html"
+        },
+        {
+          "episode": "3. Bölüm",
+          "videoUrl": "https://x.ag2m4.cfd/embed-1oi4rtwwyuve.html"
+        },
+        {
+          "episode": "4. Bölüm",
+          "videoUrl": "https://x.ag2m4.cfd/embed-g2nvfgp8qy45.html"
+        }
+      ]
+    }
+  }
+]
