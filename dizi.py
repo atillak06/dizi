@@ -8,7 +8,7 @@ from urllib.parse import urljoin
 BASE_URL = "https://www.dizipal1226.com/diziler"
 OUT_JSON = "series.json"
 OUT_HTML = "index.html"
-MAX_SERIES = 999999999
+MAX_SERIES = 1
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
