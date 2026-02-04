@@ -1,156 +1,66 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Dizipal Arşiv</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dizi Arşivi</title>
 <style>
 body {
-    margin:0;
-    font-family:-apple-system, sans-serif;
-    background:#344966;
+    background:#0f0f0f;
     color:#fff;
-}
-.header {
-    padding:15px;
-    background:#2c3e50;
-    position:sticky;
-    top:0;
+    font-family:Arial;
 }
 .grid {
     display:grid;
-    grid-template-columns:repeat(auto-fill, minmax(140px,1fr));
+    grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
     gap:15px;
-    padding:20px;
 }
 .card {
-    background:#496785;
-    border-radius:10px;
-    overflow:hidden;
-    cursor:pointer;
+    background:#1a1a1a;
+    padding:10px;
+    border-radius:8px;
 }
 .card img {
     width:100%;
-    aspect-ratio:2/3;
-    object-fit:cover;
+    border-radius:6px;
 }
-.card-title {
-    padding:8px;
-    font-size:.85em;
-    text-align:center;
-    font-weight:bold;
+.card h3 {
+    margin:8px 0 4px;
 }
-#detail {
-    display:none;
-    padding:20px;
-}
-.back {
-    cursor:pointer;
-    color:#f39c12;
-    margin-bottom:15px;
-    display:inline-block;
-}
-.genre {
-    background:#e67e22;
-    display:inline-block;
-    padding:5px 10px;
-    border-radius:15px;
-    margin:0 5px 10px 0;
-    font-size:.8em;
+.summary {
+    font-size:13px;
+    color:#ccc;
 }
 .season {
-    margin-top:20px;
+    margin-top:8px;
 }
-.episode {
-    background:#496785;
-    padding:10px;
-    border-radius:8px;
-    margin:5px 0;
-}
-.episode a {
-    color:#f39c12;
-    text-decoration:none;
+.season summary {
+    cursor:pointer;
     font-weight:bold;
+    color:#0f0;
+}
+.season ul {
+    list-style:none;
+    padding-left:10px;
+}
+.season li a {
+    display:block;
+    padding:4px 0;
+    color:#0ff;
+    text-decoration:none;
+    font-size:14px;
+}
+.season li a:hover {
+    text-decoration:underline;
 }
 </style>
 </head>
 <body>
 
-<div class="header"><h2>Dizi Arşivi</h2></div>
-<div id="list" class="grid"></div>
+<h1>📺 Dizi Listesi (0)</h1>
+<div class="grid">
 
-<div id="detail">
-    <span class="back" onclick="goBack()">← Geri</span>
-    <h1 id="dTitle"></h1>
-    <div id="dGenres"></div>
-    <p id="dSummary"></p>
-    <div id="seasons"></div>
 </div>
 
-<script>
-const data = [{"title": "Sekizinci Aile", "image": "https://www.themoviedb.org/t/p/w500/y8NmGRfD3GuhhR8bTj7rXWkOMqk.jpg", "summary": "Mütevazı bir başlangıçtan dünyanın en güçlü ailesi olmaya uzanan Basmacıgiller, zirvedeki yerlerini korumak için mücadele ediyor.", "genres": ["Komedi", "Yerli"], "seasons": {"1": [{"episode": "1. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-qj9q7gcyddoc.html"}, {"episode": "2. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-yggd89er3f15.html"}, {"episode": "3. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-1oi4rtwwyuve.html"}, {"episode": "4. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-g2nvfgp8qy45.html"}]}}, {"title": "Antrenör", "image": "https://www.themoviedb.org/t/p/w500/36Kt2rXZmfGvs7T7heFuFKRDNDr.jpg", "summary": "İnşaat mühendisi Mehmet, çocukluğunda ayrıldığı kız kardeşi hakkında nihayet bir ipucu bulur: Kız kardeşinin gittiği lise. Onu bulmaya kararlı olan Mehmet'in çözümü, okulun beden eğitimi öğretmeni Selim'in kimliğine bürünüp okula sızmaktır. Ancak spordan hiç anlamayan Mehmet, sıfırdan bir voleybol takımı kurma göreviyle karşı karşıya kaldığında çıkmaza girer. Şimdi Mehmet, kızlardan hangisinin kız kardeşi olduğunu bulmanın yanı sıra, takımı şampiyonaya hazırlamak zorundadır; tüm bunları yaparken de Selim'i taklit etmenin yol açtığı sorunları savuşturmalıdır.", "genres": ["Yerli"], "seasons": {"1": [{"episode": "1. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-2fcjt9joopx9.html"}, {"episode": "2. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-mymoxjjh4u3q.html"}, {"episode": "3. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-t7run08en9hm.html"}, {"episode": "4. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-a7076qdmdnp2.html"}, {"episode": "5. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-17t24l3900lx.html"}, {"episode": "6. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-i5z598fol70d.html"}, {"episode": "7. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-u8t3fes0jush.html"}, {"episode": "8. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-btvptifkigwa.html"}, {"episode": "9. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-6s1sjc99qbqz.html"}, {"episode": "10. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-5t7uxdvr7r5z.html"}]}}, {"title": "FER", "image": "https://www.themoviedb.org/t/p/w500/yaxQ2ZdDQkugCQUoBw1v1QQ2E9b.jpg", "summary": "İki çocuklu Dilek, kocasından ayrı yaşar ama hâlâ boşanmamıştır. Para kazanmak için bir arkadaşının tavsiyesiyle korsan taksi şoförlüğü yapmaya başlar. Bir gün arabasına daha önce hiç korsan taksiye binmemiş bir müşteri biner ve hayatı değişir.", "genres": ["Yerli"], "seasons": {"1": [{"episode": "1. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-xu3ejxnn6dkt.html"}, {"episode": "2. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-gf6f8w5jafj5.html"}, {"episode": "3. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-8bwnoedibisk.html"}, {"episode": "4. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-l3c1qsqhzqpt.html"}, {"episode": "5. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-yec36jc08ny4.html"}, {"episode": "6. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-70e9j8icm6ym.html"}, {"episode": "7. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-bar315c89apt.html"}, {"episode": "8. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-uw2it51ues5l.html"}]}}, {"title": "Final Gate", "image": "https://www.themoviedb.org/t/p/w500/ynHvtOlJcqrSyB69keCVv8iMgcD.jpg", "summary": "300 yarışmacıdan Final Gate’de kalanların, 10 gün boyunca mücadele ettiği bir yarışma programı. Bu süreçte en iyiler değil, en zekiler ve en şanslılar Final Gate’de kalacak. İbrahim Tilaver, enerjisi ve eğlenceli sunumuyla gerilimi zirveye taşıyacak, en kritik anları unutulmaz bir şova dönüştürecek. Yarışmanın sonunda yalnızca bir kişi 2.000.000 TL’nin sahibi olacak.", "genres": ["Yerli"], "seasons": {"1": [{"episode": "1. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-ejggavww7ere.html"}]}}, {"title": "Karma 2025", "image": "https://www.themoviedb.org/t/p/w500/cwIujmphpI5dcYCgJsRYf1WztRS.jpg", "summary": "30’lu yaşların sonunda olan ve aynı evi paylaşan iki yakın arkadaş Erman ve Ozan’ın hayatları, dışarıdan bakıldığında düzenli ve sıradan görünür. Fakat yaşadıkları apartman ve çevresindeki insanlar yüzünden her günleri hiç ummadıkları bir kaosa dönüşür. “Karma”, sakin tavırları ve çözüm odaklı bakışlarıyla bu kaosun üstesinden gelen iki arkadaşın hikayesini anlatıyor.", "genres": ["Komedi", "Yerli"], "seasons": {"1": [{"episode": "1. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-jssni0q08psx.html"}, {"episode": "2. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-piee4h81wmkq.html"}, {"episode": "3. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-bcbtcelitvuw.html"}, {"episode": "4. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-pjct7zb7ml5v.html"}, {"episode": "5. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-zfnvtjhg228q.html"}, {"episode": "6. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-xhnymuu4wyvi.html"}, {"episode": "7. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-wpm6mp071vyl.html"}]}}, {"title": "Persona 2025", "image": "https://www.themoviedb.org/t/p/w500/iU15jCyaAR7ET26qgfELERwKT0j.jpg", "summary": "Yiğit Dağlı yeni çıkacak kitabında yazdığı cinayet hikâyelerinin gerçek hayatta birebirlerinin yaşanması üzerine sorguya alınır. Eski eşinden başka kimseyle konuşmayacağını söyleyen Dağlı, geçirdiği soruşturma yüzünden görevden uzaklaştırılan Burcu Türkoğlu'nun bu soruşturmayı yönetmesine vesile olur. Burcu yüksek profilli davalara bakan ve şüphelilerin profillerini ustalıkla çıkaran bir ekip kurarken oynadığı oyunun sonuçlarıyla yüzleşmek zorunda kalan Yiğit, hatalarının ağırlığını kabullenmek ve sevdiği kadın için her şeyi riske atmak zorundadır.", "genres": ["Yerli"], "seasons": {"1": [{"episode": "1. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-6df3u4gomuu1.html"}, {"episode": "2. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-3ntdrvxwu1op.html"}, {"episode": "3. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-2ck06j69hvno.html"}, {"episode": "4. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-tsmzd90rx2v9.html"}, {"episode": "5. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-o7qp4n2msw0w.html"}, {"episode": "6. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-vf4zrn4wsnin.html"}, {"episode": "7. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-cnjndtvkt2iv.html"}, {"episode": "8. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-p0q3dxvhvr1z.html"}, {"episode": "9. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-f6m2r3jy1hx5.html"}, {"episode": "10. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-kin0p5uk2stx.html"}]}}, {"title": "Nero the Assassin", "image": "https://www.themoviedb.org/t/p/w500/twNHmxeFkDEdGzYMeGTp9stoGUC.jpg", "summary": "Fransa, 1504. Acımasız bir suikastçı, uzun zamandır görmediği kızını tehlikeli düşmanlardan ve şeytani güçlerden korumak için kızıyla birlikte kaçmaya başlar.", "genres": ["Aksiyon", "Macera"], "seasons": {"1": [{"episode": "1. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-kdqbf3jaq7wq.html"}, {"episode": "2. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-wawsrl54c42o.html"}, {"episode": "3. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-jmx724ok7z4h.html"}, {"episode": "4. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-cnwj50aqm8wv.html"}, {"episode": "5. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-l1nu5iet3rug.html"}, {"episode": "6. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-1aftsksg8wce.html"}, {"episode": "7. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-a406j81cy8tf.html"}, {"episode": "8. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-ko6506njh1l1.html"}]}}, {"title": "Enfes Bir Akşam", "image": "https://www.themoviedb.org/t/p/w500/kBO1JZAqgeazLV8nbPz0MSiVBU1.jpg", "summary": "Nihal'in aile serveti risk altındadır. Osman için ise hayat iş ve paradan ibarettir. Ancak tüm İstanbul sosyetesini derinden sarsacak bir aşk hikâyesi onları beklemektedir.", "genres": ["Dram", "Yerli"], "seasons": {"1": [{"episode": "1. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-q4qtmm10bdlj.html"}, {"episode": "2. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-vwh6yibhjhju.html"}, {"episode": "3. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-yltrpy6cosnn.html"}, {"episode": "4. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-vt1dvgqb6z5v.html"}, {"episode": "5. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-hdudofajaxoy.html"}, {"episode": "6. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-xyf4dxdr91xm.html"}, {"episode": "7. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-9gny8r8y2dhi.html"}, {"episode": "8. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-9amwx45l1dkh.html"}]}}, {"title": "Kaosun Anatomisi", "image": "https://www.themoviedb.org/t/p/w500/z8mk1BCFDg6IF625t3mJhat5Cyq.jpg", "summary": "Kaosun Anatomisi, yasadışı işlerle uğraşan bir adamla yolunun kesişmesiyle hayatı değişen bir doktorun hikayesini konu ediyor. Ozan, acil serviste çalışan idealist, genç bir doktordur. Türkiye’nin en güçlü yasadışı liderlerinden Kenan ile Ozan'ın yollarının beklenmedik bir şekilde kesişmesi her ikisinin hayatının değişmesine neden olur.", "genres": ["Yerli"], "seasons": {"1": [{"episode": "1. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-iw06qym4tdq5.html"}, {"episode": "2. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-cnfda8xv8st8.html"}, {"episode": "3. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-br97dxkh3mzh.html"}, {"episode": "4. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-28n36zhlwg7v.html"}, {"episode": "5. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-gjqrvka4vgy1.html"}, {"episode": "6. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-qd11e8k7vlh5.html"}, {"episode": "7. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-1cy59a46sb4n.html"}, {"episode": "8. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-7t9pv1q9r62h.html"}]}}, {"title": "Platonik", "image": "https://www.themoviedb.org/t/p/w500/dj8A4dX6oC7DFD2RWLqvMLMPVQ3.jpg", "summary": "Gizli planları olan çekici bir konuk Mavi Dolunay Otel'e yerleşir ve orada çalışan iki kız kardeşle arasında tuhaf, deli dolu bir aşk üçgeni oluşur.", "genres": ["Komedi", "Yerli"], "seasons": {"1": [{"episode": "1. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-b0ntwmnpu9hv.html"}, {"episode": "2. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-pikn33ssci5x.html"}, {"episode": "3. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-2s26rrp91rwj.html"}, {"episode": "4. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-qbbmw2mizxlf.html"}, {"episode": "5. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-v9idpvv2i3ko.html"}, {"episode": "6. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-nfzunae33tgl.html"}, {"episode": "7. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-8ygln20ormg3.html"}, {"episode": "8. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-7hrxsdj7x2xc.html"}]}}, {"title": "Modern Kadın", "image": "https://www.themoviedb.org/t/p/w500/8KdwDFFQwtVDEDEqePR3Ble8h1S.jpg", "summary": "Geleneksel bir aileden gelen ve İstanbul’da kendi ayakları üzerinde durmaya çalışan Pınar, bir gıda firmasında marka müdür yardımcısı olarak çalışır. Dışarıdan güçlü ve kararlı görünen Pınar, iç dünyasındaysa aşkı, terfiyi ve kendi benliğini arar.", "genres": ["Komedi", "Yerli"], "seasons": {"1": [{"episode": "1. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-zv3k2lwyd1g6.html"}, {"episode": "2. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-ekb8rxq4yvun.html"}, {"episode": "3. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-qoxhbkmf0vqs.html"}, {"episode": "4. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-g50ts5xmpmz0.html"}, {"episode": "5. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-3zcmbjj6kjqe.html"}, {"episode": "6. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-le154octci5d.html"}, {"episode": "7. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-vpuvsfz0g33g.html"}, {"episode": "8. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-5xol5az8lp85.html"}, {"episode": "9. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-4xrokd8qt07f.html"}, {"episode": "10. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-36nctfqonw89.html"}]}}, {"title": "Olympo", "image": "https://www.themoviedb.org/t/p/w500/2X06R82PG2HVZl6h7YeXXT11EEP.jpg", "summary": "Bir yüzücü, yüksek performans spor merkezinde bayılınca Amaia, sporcu arkadaşlarının hırsları uğruna aldıkları aşırı riskleri araştırmaya koyulur.", "genres": ["Dram", "Gizem", "Spor"], "seasons": {"1": [{"episode": "1. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-uvup9455rdl2.html"}, {"episode": "2. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-5c9roavbpo2d.html"}, {"episode": "3. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-blgjlklors4c.html"}, {"episode": "4. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-byfw0zzkf2oy.html"}, {"episode": "5. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-rqokia2cxk3e.html"}, {"episode": "6. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-gxhb48ydsckd.html"}, {"episode": "7. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-wf1l15saf28g.html"}, {"episode": "8. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-bwp0yoxoqbcl.html"}]}}, {"title": "Aşkı Hatırla", "image": "https://www.themoviedb.org/t/p/w500/nSzE37pWqu2ynENq5jPVj5eFcxx.jpg", "summary": "Evlilik yolundayken altı ay önce ayrılma kararı alan güvenilir ünlü mimar Deniz ve fenomen bir editör olan Güneş, tesadüfen karşılaştıkları günün akşamında telefonlarına düşen bir mesajla hayatlarını değiştirecek bir yolculuğun içine çekilirler. Bu yeni macera onları eski ilişkilerindeki eksik parçaların peşine düşürecek ve aşkı hatırlatacaktır.", "genres": ["Yerli"], "seasons": {"1": [{"episode": "1. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-lazfhtwdgje1.html"}, {"episode": "2. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-9j1nxb9zg0s8.html"}, {"episode": "3. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-t0gr3rmixrx4.html"}, {"episode": "4. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-ugozklm8eogi.html"}, {"episode": "5. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-jbo1gcgm3lhi.html"}, {"episode": "6. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-hyd0clhngqpf.html"}, {"episode": "7. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-516z43tja9uj.html"}, {"episode": "8. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-dn4emwhw3lh7.html"}]}}, {"title": "FROM", "image": "https://www.themoviedb.org/t/p/w500/cjXLrg4R7FRPFafvuQ3SSznQOd9.jpg", "summary": "Amerika Birleşik Devletleri'nin ortasındaki kabus gibi bir şehir, içine giren herkesi tuzağa düşürür. Kasaba sakinleri, normallik duygusunu sürdürmek ve bir çıkış yolu aramak için savaşırken, güneş battığında ortaya çıkan korkunç yaratıklar da dahil olmak üzere, çevredeki ormandan gelen tehditlere karşı da hayatta kalmak için çabalar.", "genres": ["Bilimkurgu", "Gizem", "Korku"], "seasons": {"1": [{"episode": "1. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-babspiawiiax.html"}, {"episode": "2. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-exg6ouwjy0ip.html"}, {"episode": "3. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-i1r7csvh35z9.html"}, {"episode": "4. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-nyt2emekk4ay.html"}, {"episode": "5. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-ed5atzk0634r.html"}, {"episode": "6. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-3qj20ak5jlmz.html"}, {"episode": "7. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-2w30xp8m0l36.html"}, {"episode": "8. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-f89b0whk5tqm.html"}, {"episode": "9. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-37zie5o10sg0.html"}, {"episode": "10. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-5aplmth3tghy.html"}], "2": [{"episode": "1. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-j7chzfnoldiq.html"}, {"episode": "2. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-qksd7ro0vz8b.html"}, {"episode": "3. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-ipzcbmi8cdly.html"}, {"episode": "4. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-a60pi69tantq.html"}, {"episode": "5. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-5mp0pg8n2osz.html"}, {"episode": "6. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-edld1fj18q6k.html"}, {"episode": "7. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-6erj7ni6ywz5.html"}, {"episode": "8. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-32zval9vyfgq.html"}, {"episode": "9. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-jgfgf4hld7oc.html"}, {"episode": "10. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-t67fd5iwjm2e.html"}], "3": [{"episode": "1. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-3hgvc1nlitp2.html"}, {"episode": "2. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-0u4pl6jvnxr1.html"}, {"episode": "3. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-oa0vyke4qeve.html"}, {"episode": "4. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-45wvvmn1pi8j.html"}, {"episode": "5. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-8jxeu5qlali6.html"}, {"episode": "6. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-bu0xpf747ha3.html"}, {"episode": "7. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-gjih3tzm7wlv.html"}, {"episode": "8. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-905wkhvrblrt.html"}, {"episode": "9. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-a3omsx3au3aq.html"}, {"episode": "10. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-v9s4uix2d8lx.html"}]}}, {"title": "The Eternaut", "image": "https://www.themoviedb.org/t/p/w500/ucI5KroZLP0KyJqQnAdOpzhVvBs.jpg", "summary": "Milyonlarca insanı öldüren toksik bir kar yağışının ardından, Juan Salvo ile Buenos Aires'te hayatta kalan bir grup insan dünya dışından görünmez bir tehdide karşı direnmelidir.", "genres": ["Aksiyon", "Bilimkurgu", "Macera"], "seasons": {"1": [{"episode": "1. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-7rxflbbfa1eb.html"}, {"episode": "2. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-f8xz07lqmsig.html"}, {"episode": "3. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-inmtsrcsmqur.html"}, {"episode": "4. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-tun0f9spfo69.html"}, {"episode": "5. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-wm6dcsnu7t51.html"}, {"episode": "6. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-xuzqgx2lmh0q.html"}]}}, {"title": "Yüzde İki", "image": "https://www.themoviedb.org/t/p/w500/sQIujEmJh0HZY2xg1Yl2fPyWM2e.jpg", "summary": "İstanbul'u oldum olası sevemeyen Mesut, babasının yüzde 2 hissesi için vekâletname verdiği şirketin satışı nedeniyle İstanbul'a gelir. Satış sırasındaki kararsızlık sebebiyle İstanbul'da planladığından daha uzun kalan Mesut için tek olumlu yan, yıllar önce hoşlandığı Beste'nin yakınında olmaktır. Ancak onunla olan ilişkisi de birçok kafa karışıklığına sebep olur.", "genres": ["Komedi", "Yerli"], "seasons": {"1": [{"episode": "1. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-bpdwycm2buvo.html"}, {"episode": "2. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-xhg9gdrsn384.html"}, {"episode": "3. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-1577x74z4k4c.html"}, {"episode": "4. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-ztm4zo22kw0t.html"}, {"episode": "5. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-q4dq1c25w3iv.html"}, {"episode": "6. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-wljckla7qdby.html"}, {"episode": "7. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-0qu4conlw9qf.html"}, {"episode": "8. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-7rr3ago9g5pg.html"}, {"episode": "9. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-1er63hbref9v.html"}, {"episode": "10. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-3kb4zkljnb3x.html"}]}}, {"title": "İstanbul Ansiklopedisi", "image": "https://www.themoviedb.org/t/p/w500/UlNvxtLq87Pak18xTSNK2OJPd9.jpg", "summary": "Küçük bir kasabadan İstanbul'a okumaya gelen Zehra, annesinin eski bir arkadaşının yanına taşınır. Büyük şehre uyum sağlamaya çalışırken Zehra'nın benliği ve inancı sınanacaktır.", "genres": ["Dram", "Yerli"], "seasons": {"1": [{"episode": "1. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-35c5l2eofegy.html"}, {"episode": "2. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-fl1uuh5anlod.html"}, {"episode": "3. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-0i5525vwfjwn.html"}, {"episode": "4. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-k2hy0iieq0yt.html"}, {"episode": "5. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-n7h5vnu5g9t9.html"}, {"episode": "6. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-5745y94g6uqd.html"}, {"episode": "7. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-4g28bp4vcmc2.html"}, {"episode": "8. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-lsa1gz1h0piq.html"}]}}, {"title": "The Gardener", "image": "https://www.themoviedb.org/t/p/w500/l2Fy8vvr27vbYJOPe49EfVd5Qli.jpg", "summary": "Annesi, Elmer'in duygusuzluğunu kullanarak onu bir tetikçiye dönüştürdü. Ama Elmer yeni kurbanına âşık olunca sakin, yerel bahçıvan kimlikleri tehlikeye girer.", "genres": ["Gerilim", "Gizem"], "seasons": {"1": [{"episode": "1. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-7g4cbh0lom8x.html"}, {"episode": "2. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-cnfmj3abdi40.html"}, {"episode": "3. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-0gz8eds806vm.html"}, {"episode": "4. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-9lxl2kbxew8b.html"}, {"episode": "5. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-ravvoon1qjgj.html"}, {"episode": "6. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-732bvkhaheas.html"}]}}, {"title": "High Potential", "image": "https://www.themoviedb.org/t/p/w500/sEWC7lzVKfuwXhzdahW4AX1F05s.jpg", "summary": "Olağanüstü bir zekaya sahip bekar bir anne, suçları çözmedeki sıra dışı yeteneği ile ve kurallara sıkı sıkıya bağlı bir dedektifin desteğiyle alışılmadık bir ortaklığa adım atar.", "genres": ["Dram", "Gizem", "Suç"], "seasons": {"1": [{"episode": "1. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-1r1gxrh8k35e.html"}, {"episode": "2. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-4mechn6wnt1x.html"}, {"episode": "3. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-7jyu16o51q70.html"}, {"episode": "4. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-h01vdu3ieo5h.html"}, {"episode": "5. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-8qncek0p5tnt.html"}, {"episode": "6. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-7007gw48u9j4.html"}, {"episode": "7. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-c04epxj3lywd.html"}, {"episode": "8. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-qv3o3gnhyftf.html"}, {"episode": "9. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-in7zfe4sn31w.html"}, {"episode": "10. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-x9i9yag6fjng.html"}, {"episode": "11. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-yajismc1m10a.html"}, {"episode": "12. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-yi9vc9gvv5fj.html"}, {"episode": "13. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-f88934ki1zei.html"}]}}, {"title": "Karma", "image": "https://www.themoviedb.org/t/p/w500/2G99FfWYCAdsmAIZO8zGFjcDidY.jpg", "summary": "Vahim bir kaza sonucu yolları kesişen altı kişi, ilahi adalet ve suçun iç içe geçtiği heyecan verici bir öyküde kendi karanlık gerçekleri ve bağlantılarıyla yüzleşmelidir.", "genres": ["Gerilim", "Suç"], "seasons": {"1": [{"episode": "1. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-7wdlavtgaprk.html"}, {"episode": "2. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-9tlql3sqdkan.html"}, {"episode": "3. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-q0g92mper108.html"}, {"episode": "4. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-cafu8c3qmga1.html"}, {"episode": "5. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-vgrk9sgkpgf1.html"}, {"episode": "6. Bölüm", "videoUrl": "https://x.ag2m4.cfd/embed-aak0nsinl94k.html"}]}}];
-const list = document.getElementById("list");
-const detail = document.getElementById("detail");
-
-function renderList() {
-    list.innerHTML = "";
-    detail.style.display = "none";
-    list.style.display = "grid";
-
-    data.forEach(d => {
-        const c = document.createElement("div");
-        c.className = "card";
-        c.innerHTML = `
-            <img src="${d.image}" onerror="this.src='https://via.placeholder.com/200x300?text=No+Image'">
-            <div class="card-title">${d.title}</div>
-        `;
-        c.onclick = () => openDetail(d);
-        list.appendChild(c);
-    });
-}
-
-function openDetail(d) {
-    list.style.display = "none";
-    detail.style.display = "block";
-
-    document.getElementById("dTitle").innerText = d.title;
-    document.getElementById("dSummary").innerText = d.summary || "Özet bulunamadı";
-
-    const g = document.getElementById("dGenres");
-    g.innerHTML = "";
-    if (d.genres && d.genres.length) {
-        d.genres.forEach(x => {
-            const s = document.createElement("span");
-            s.className = "genre";
-            s.innerText = x;
-            g.appendChild(s);
-        });
-    }
-
-    const s = document.getElementById("seasons");
-    s.innerHTML = "";
-
-    Object.keys(d.seasons).sort().forEach(season => {
-        const div = document.createElement("div");
-        div.className = "season";
-        div.innerHTML = `<h2>Sezon ${season}</h2>`;
-
-        d.seasons[season].forEach(ep => {
-            const e = document.createElement("div");
-            e.className = "episode";
-            e.innerHTML = `<a href="${ep.videoUrl || ep.url}" target="_blank">${ep.episode}</a>`;
-            div.appendChild(e);
-        });
-
-        s.appendChild(div);
-    });
-}
-
-function goBack() {
-    renderList();
-}
-
-renderList();
-</script>
 </body>
 </html>
